@@ -1,4 +1,4 @@
-const BLOG_ENDPOINT = "https://desafiojs-5d832-default-rtdb.firebaseio.com/usersList/-NiphWXA0DuPtYPlUyod";
+const BLOG_ENDPOINT = "https://desafiojs-5d832-default-rtdb.firebaseio.com";
 //console.log("blog view")
 let queryString = location.search;
 
@@ -19,13 +19,13 @@ const getDataById = async (entryKey) => {
     let data = await response.json();
     //console.log(data)
 
-    let {comments, comments_count, date, id, name, profile_image, tags, title, key, img, description} = data
+    let {comments, comments_count, date, id, name, imgprofile, tags, title, key, img, description} = data
     let descArray = description.split(".")
     descArray.pop()
 
     document.getElementById("titleHTML").textContent = title;
     document.getElementById("entry-cover").src = img;
-    document.getElementById("entry-profile-pic").src = profile_image;
+    document.getElementById("entry-profile-pic").src = imgprofile;
     document.getElementById("entry-title").textContent = title;
     document.getElementById("entry-author").textContent = `${name} • ${date}`;
     document.getElementById("entry-comments-number").textContent = `Comments (${comments_count})`
@@ -131,4 +131,37 @@ const patchComment = async (newArray,entryKey) => {
     })
     let data = await response.json()
     return data
+};
+
+let devLogo = document.getElementById("logo-nav")
+devLogo.addEventListener("click",() => {
+  window.open("../index.html")
+})
+
+//Parte Navabar Login
+const logOut = () => {
+    localStorage.removeItem("token");
 }
+let token = localStorage.getItem("token");
+console.log(token) 
+
+let btnLogout = document.getElementById("btn-logout");
+let btnLogin = document.getElementById("btn-login");
+let btnCreate = document.getElementById("btn-create");
+let btnPost = document.getElementById("btn-post");
+
+const view = () =>{
+    if (token ){
+        btnLogout.classList.remove("d-none");
+        btnPost.classList.remove("d-none");
+        btnLogin.classList.add("d-none");
+        btnCreate.classList.add("d-none");
+    } else {}
+}
+
+view()
+
+btnLogout.addEventListener("click", () => {
+    logOut()
+    window.open(`blogView.html?entryKey=${entryKey}`,"_blank")
+});

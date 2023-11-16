@@ -15,7 +15,7 @@ const createPostObject = () => {
   let date = document.getElementById("date").value;
   let tagsValue = document.getElementById("tags").value;
   let tags = tagsValue.split(",");
-  let comments_count = document.getElementById("name").value;
+  let comments_count = 50;
   let comments= [{comment_name: "Giovanni Matteo",
                         comment_profilePic: `https://randomuser.me/api/portraits/men/1.jpg`,
                         comment_text: "Thanks for this list. I have never heard some of them before. Since you mentioned Beekeper, I thought it could be interesting to add Retable to this list - it's an Airtable alternative but with a one-time payment. You can also add addons on top to boost with several features. There are several developers connecting Retable with 3rd party APIs to store lots of company data.",
@@ -48,7 +48,6 @@ const createPostObject = () => {
     document.getElementById("form-alert").classList.remove("d-none");
   }
 };
-
 
 
 const createPostInDb = async (postObject) => {
@@ -201,3 +200,8 @@ const printAllPost = (entriesArray) => {
 };
 
 getAllEntries();
+
+let devLogo = document.getElementById("logo-nav")
+devLogo.addEventListener("click",() => {
+  window.open("../index.html")
+})

@@ -1,0 +1,106 @@
+body {
+    background-color: #f8f9fa;
+}
+*{
+    font-family:sans-serif;
+}
+
+.navbar{
+    border: solid gray 1px;
+}
+
+#logo-nav {
+    width: 40px;
+    height: 30px;
+    border-radius: 20%;
+    margin-left: 220px;
+    margin-right: 5px;
+}
+
+.form-control{
+    display: flex;
+    width: 300px;
+    height: 30px;
+    }
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 30px;
+}
+.create-user{
+    
+    width:25%;
+    display: flex;
+    justify-content: center;
+    width: 600px;
+    height: 30px;
+
+}
+#btn-create{
+    width: 150px;
+    height: 30px;
+    text-emphasis-color:  #3b49df;
+}
+#btn-login{
+    width: 80px;
+    height: 30px;
+}
+/*ESTILOS DEL LOGIN*/
+#link-login{
+    display: flex;
+}
+.container-logo-login {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    height: 30vh; 
+}
+
+#img-login{
+    display: flex;
+    width: 440px;
+    height: 135px;
+    border-radius: 20%;
+
+}
+.form-login{
+    display: flex;
+    flex-direction: column; /*Login en filas*/
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    height: 40vh;
+}
+#btn-create-login{
+    width: 300px;
+    height: 30px;
+}
+
+/*Estilos del Body*/
+
+#entry-cover {
+    height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
+
+#entry-profile-pic {
+    max-width: 5%;
+    height: auto;
+}
+
+#entry-comment-pic{
+    max-width: 60%;
+    height: auto;
+}
+h1 {
+    font-weight: 700;
+}
+
+#tagHover:hover{
+    color: #0D0D0D;
+    background-color: #67c21245;
+    border:2px solid #67C212;
+}
+

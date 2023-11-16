@@ -247,3 +247,9 @@ footer{
 .invisible{
     opacity: 0;
 }
+
+#relevantButtom:hover, #latestButtom:hover, #topButtom:hover {
+    background-color: rgb(237, 230, 250);
+    border-radius: 6px;
+    color: rgb(60, 60, 220);
+  }
