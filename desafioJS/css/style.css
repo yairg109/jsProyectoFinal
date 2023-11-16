@@ -1,0 +1,249 @@
+body {
+    background-color: #f8f9fa;
+}
+*{
+    font-family:sans-serif;
+}
+
+.navbar{
+    border: solid gray 1px;
+}
+
+
+#logo-nav {
+    width: 40px;
+    height: 30px;
+    border-radius: 20%;
+    margin-left: 220px;
+    margin-right: 5px;
+}
+
+.form-control{
+    display: flex;
+    width: 300px;
+    height: 30px;
+    }
+.btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 30px;
+}
+.create-user{
+    
+    width:25%;
+    display: flex;
+    justify-content: end;
+    width: 600px;
+    height: 30px;
+
+
+}
+#btn-create{
+    width: 150px;
+    height: 30px;
+    text-emphasis-color:  #3b49df;
+    justify-content: end;
+}
+#btn-login{
+    width: 80px;
+    height: 30px;
+}
+/*ESTILOS DEL LOGIN*/
+#link-login{
+    display: flex;
+}
+.container-logo-login {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    height: 30vh; 
+}
+
+#img-login{
+    display: flex;
+    width: 440px;
+    height: 135px;
+    border-radius: 20%;
+
+}
+.form-login{
+    display: flex;
+    flex-direction: column; /*Login en filas*/
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    height: 40vh;
+}
+#btn-create-login{
+    width: 300px;
+    height: 30px;
+}
+
+.first-content-left{
+    margin-bottom: 30px;
+}
+
+.second-content-left{
+    margin-bottom: 30px;
+}
+
+.second-content-left a:hover{
+    color:#3b49df
+}
+.third-content-left a:hover{
+    color:#3b49df
+}
+/*Primera carta de la columna left*/
+.btn-link{
+    width: 100px;
+}
+/* los items del segundo grupo de la columna left*/
+.list-group-item a {
+    color: black;
+
+}
+.btn-outline-primary{
+    width:150px;
+    height: 40px;
+    
+}
+.btn-left-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+.btn-left-link{
+   border-style: none;
+}
+.icon-left{
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.imgs-icons-second-left{
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+}
+.icon-left .icon-left-content{
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+   
+    justify-content:space-around;
+}
+/*Accordion del lado left*/
+.accordion-item{
+    margin-bottom: 30px;
+
+}
+.devcomunity-left-content{
+    margin-bottom: 30px;
+
+}
+/*Estilo de cartas*/
+
+/*Estilos centrales*/
+.img-size{
+    width: 50px;
+    height: 50px;
+}
+.img-up{
+    width: 100%;
+    height: 250px;
+}
+.margin-right{
+    margin-left: 10px;
+}
+.ancla_tag{
+    text-decoration: none;
+    margin-left: 10px;
+}
+.ancla_tag:hover{
+    color: #0D0D0D;
+    background-color: #09e4e42d;
+    border:2px solid #09E4E4 ;
+}
+.ancla_tag1{
+    text-decoration: none;
+    margin-left: 10px;
+}
+.ancla_tag1:hover{
+    color: #0D0D0D;
+    background-color: #67c21245;
+    border:2px solid #67C212 ;
+}
+.ancla_tag2{
+    text-decoration: none;
+    margin-left: 10px;
+}
+.ancla_tag2:hover{
+    color: #0D0D0D;
+    background-color: #e409093b;
+    border:2px solid #E40909 ;
+}
+.ancla_tag3{
+    text-decoration: none;
+    margin-left: 10px;
+}
+.ancla_tag3:hover{
+    color: #0D0D0D;
+    background-color: #e4970931;
+    border:2px solid #E49709 ;
+}
+
+/*RIGHT-COLUMN*/
+.one-card-right{
+    margin-bottom: 30px;
+}
+.one-card-right  ul li:hover{
+    color: #3b49df;
+}
+
+.second-card-right{
+    margin-bottom: 30px;
+}
+
+.second-card-right ul li:hover{
+    color: #3b49df;
+}
+.third-card-right{
+    margin-bottom: 30px;
+}
+
+.third-card-right ul li:hover{
+    color: #3b49df;
+}
+.four-card-right{
+    margin-bottom: 30px;
+    width: 18rem;
+    justify-content: center;
+}
+.four-card-content-right{
+    margin-bottom: 20px;
+    
+}
+.four-card-content-right a{
+    color: black;
+    text-decoration: none;
+    
+}
+
+.four-card-content-right:hover{
+    background-color: rgb(255, 255, 255);
+  
+}
+.four-card-content-right a:hover{
+    color: #3b49df;
+}
+
+footer{
+    justify-content:baseline;
+    text-align: center;
+}
+
+.invisible{
+    opacity: 0;
+}

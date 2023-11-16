@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/blogView.css">
+    <title id="titleHTML"></title>
+</head>
+<body>
+    <!--NAVBAR-->
+    <nav class="navbar">
+        <div class="container">
+             <form id="search" class="d-flex" role="search">
+                <img id="logo-nav" src="../images/devLogo.png">
+                <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                <button class="btn btn-outline-success " type="submit">Search</button>
+            </form>
+            <div class="create-user">
+                <a id="link-login" href="../login.html">
+                    <button id="btn-login" type="button" class="btn btn-link" >Log in</button>
+                    <button id="btn-create" type="button" class="btn btn-outline-primary">Create account</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!--BODY-->
+    <div class="container">
+        <div class="row justify-content-evenly">
+            <div class="col-md-9">
+                <div class="card mb-3">
+                    <img src="" class="" id="entry-cover">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col d-flex mb-3">
+                                <img src="" class="card-img-top rounded-circle w-25" id="entry-profile-pic">
+                                <div class="d-flex flex-column justify-content-center px-4">
+                                    <h5 class="card-text" id="entry-author"></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row px-5">
+                            <h1 class="card-title py-3" id="entry-title"></h1>
+                            <div class="col justify-content-left d-flex mb-3" id="tagsWrapper"></div>
+                            <div class="row mt-2" id="entry-content"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3 justify-content-end g-0" id="entry-form-comment">
+                    <div class="card col-md-11 py-4">
+                        <form>
+                            <div class="col mx-4 mb-3">
+                                <label for="comment" class="form-label"><strong>Write a Comment</strong></label>
+                                <input type="text" class="form-control" id="newComment" placeholder="Add to the discussion">
+                            </div>
+                            <div class="col mx-4">
+                                <button type="button" class="btn btn-dark" id="commentButtom">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row mb-3 justify-content-end g-0">
+                    <div class="card col-md-11 py-4">
+                        <h4 class="mx-4" id="entry-comments-number"></h4>
+                    </div>
+                </div>
+
+                <div class="mb-3" id="entry-card-comments"></div>
+            </div>
+    <!-- Right Column -->
+            <div class="col-md-3">
+                <div class="bg-light p-3">
+                    <!--First content-right-->
+                    <div class="one-card-right">
+                      <div class="card" style="width: 18rem">
+                        <div class="card-header"> <strong>#discuss</strong></div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Can the First 5 Minutes of Your Day Set the Tone?
+                          </li>
+                          <li class="list-group-item">Can Anyone Do Anything?</li>
+                          <li class="list-group-item">
+                            Sloan's Inbox: Struggling to focus, any advice?
+                          </li>
+                          <li class="list-group-item">Discussion of the Week - v10</li>
+                          <li class="list-group-item">
+                            How Do You Manage Tech Debt Effectively?
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!--Second content right-->
+                    <div class="second-card-right">
+                      <div class="card" style="width: 18rem">
+                        <div class="card-header"> <strong>#watercoole</strong>r</div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Forgiveness as an Engineer</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!--Third card-->
+                    <div class="third-card-right">
+                      <div class="card" style="width: 18rem">
+                        <div class="card-header">#hacktoberfest23</div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Three years of completing Hacktoberfest!
+                          </li>
+                          <li class="list-group-item">
+                            Three years of completing Hacktoberfest!
+                          </li>
+                          <li class="list-group-item">
+                            Hii Developers I am new here joining by hacktoberfest
+                          </li>
+                          <li class="list-group-item">
+                            Hacktoberfest 2023: The Thrilling World of Open Source New
+                          </li>
+                          <li class="list-group-item">
+                            My Hacktoberfest 2023 Journey: From Contributor to
+                            Maintainer 1 comment
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!--Four Card-->
+                    <div class="four-card-right">
+                      <h5><strong>trending guides/resources</strong></h5>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/#:~:text=Top%205%20Github%20repositories%20to%20achieve%20system%20design%20mastery"
+                          >Top 5 Github repositories to achieve system design mastery</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/nathan_tarbert/9-open-source-repos-that-will-make-your-saas-gold-54h7"
+                          >🔥9 Open-Source Repos That Will Make Your SaaS Gold 🤔</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/jurajmalenica/unpopular-opinion-its-harder-than-ever-to-be-a-good-software-engineer-32ek"
+                          >Unpopular Opinion: It’s harder than ever to be a good
+                          software engineer</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/#:~:text=44%20React%20Frontend%20Interview%20Questions"
+                          >44 React Frontend Interview Questions</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/#:~:text=24%20Open%2DSource%20Projects%20for%20Developers%20in%202023%20%F0%9F%94%A5%F0%9F%91%8D"
+                          >24 Open-Source Projects for Developers in 2023 🔥👍</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/#:~:text=%E2%9A%A1%E2%9A%A1%207%20Open%20Source%20Repositories%20That%20Will%20Make%20You%2090%25%20Smarter%20%F0%9F%98%8E"
+                          >⚡⚡ 7 Open Source Repositories That Will Make You 90%
+                          Smarter 😎</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/#:~:text=Is%20copying%20from%20open%20source%20projects%20stealing%3F"
+                          >Is copying from open source projects stealing?</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/#:~:text=Why%20you%20should%20choose%20HTMX%20for%20your%20next%20project"
+                          >Why you should choose HTMX for your next project</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/#:~:text=Good%20Bye%20CRUD%20APIs%2C%20Hello%20Sync%3A%20Realtime%20PostgreSQL%20with%20ElectricSQL"
+                          >Good Bye CRUD APIs, Hello Sync: Realtime PostgreSQL with
+                          ElectricSQL</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a href="https://dev.to/gfish94/brainjs-for-beginners-1g77"
+                          >Brain.js for Beginners</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/#:~:text=My%208%20Tips%20for%20a%20Better%20Life%20as%20a%20Developer"
+                          >Making APIs the Right Way with API Platform</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/lundjrl/vscode-extensions-to-magically-accelerate-your-productivity-2lad"
+                        >
+                          🔮 VSCode Extensions To Magically Accelerate Your
+                          Productivity</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/chaoocharles/how-creating-content-as-a-developer-changed-my-life-270e"
+                          >How Creating Content as a Developer Changed My Life</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/codewithshahan/10-math-concepts-for-every-programmer-31n9"
+                          >Why we need MATH for Programming (10 math concepts)</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/rchugunov/practical-tips-for-code-reviews-in-large-teams-25nb"
+                          >Practical tips for code reviews in large teams</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/firecampdev/10-typescript-developer-you-must-follow-to-become-typescript-expert-in-2024-5c19"
+                          >10 typescript developers you must follow to become typescript
+                          expert in 2024</a
+                        >
+                      </div>
+                      <div class="four-card-content-right">
+                        <a
+                          href="https://dev.to/wraith/my-8-tips-for-a-better-life-as-a-developer-1hfg"
+                          >My 8 Tips for a Better Life as a Developer</a
+                        >
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../JS/blogView.js"></script>
+</body>
+</html>

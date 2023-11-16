@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <form
+          id="post-form"
+          action=""
+          class="bg-dark text-white border rounded p-3"
+        >
+          <div class="form-group mb-3">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Nombre del usuario"
+              id="name"
+              value="Test name"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Titulo"
+              id="title"
+              value="Test title"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Descripción"
+              id="description"
+              value="test description"
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Imagen del post"
+              id="img"
+              value="https://picsum.photos/200/"
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Imagen perfil"
+              id="img-profile"
+              value="https://randomuser.me/api/portraits/men/28.jpg"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Fecha"
+              id="date"
+              value="Fecha"
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Imagen del producto"
+              id="tags"
+              value="Agrega tags a tus productos ( separados por comas)"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Imagen del producto"
+              id="comments_count"
+              value="comentario"
+            />
+          </div>
+
+          <div id="form-alert" class="alert alert-danger d-none" role="alert">
+            Todos los campos son obligatorios
+          </div>
+          <a href="index.html">
+            <button id="save-post" type="button" class="btn btn-primary">
+              Guardar
+            </button>
+          </a>
+        </form>
+      </div>
+      <div class="col-12 col-md-6">
+        <div
+          id="products-alert"
+          class="alert alert-warning d-none"
+          role="alert"
+        >
+          No hay productos en este catálogo
+        </div>
+        <div id="filter-alert" class="alert alert-info d-none" role="alert">
+          No hay resultados de tu búsqueda
+        </div>
+        <div
+          id="products-wrapper"
+          class="row row-cols-1 row-cols-md-2 g-4"
+        ></div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./JS/post.js"></script>
+  </body>
+</html>
