@@ -1,12 +1,12 @@
-const BLOG_ENDPOINT = "https://desafiojs-5d832-default-rtdb.firebaseio.com";
-//console.log("blog view")
+//const BLOG_ENDPOINT = "https://desafiojs-5d832-default-rtdb.firebaseio.com";
+const BLOG_ENDPOINT = "http://localhost:3000/posts";
 let queryString = location.search;
 
 let params = new URLSearchParams(queryString);
 //console.log(params);
 
 let entryKey = params.get("entryKey");
-//console.log(entryKey);
+console.log(entryKey);
 
 let divCarComments = document.getElementById("entry-card-comments")
 let divTagsWrapper = document.getElementById("tagsWrapper")
@@ -15,11 +15,12 @@ let commentButtom = document.getElementById("commentButtom")
 let today = new Date()
 
 const getDataById = async (entryKey) => {
-    let response = await fetch(`${BLOG_ENDPOINT}/${entryKey}/.json`);
+    let response = await fetch(`${BLOG_ENDPOINT}/${entryKey}`);
     let data = await response.json();
-    //console.log(data)
+    newdata = data.data
+    //console.log(newdata)
 
-    let {comments, comments_count, date, id, name, imgprofile, tags, title, key, img, description} = data
+    let {comments, comments_count, date, id, name, imgprofile, tags, title, img, description} = newdata
     let descArray = description.split(".")
     descArray.pop()
 
@@ -125,7 +126,7 @@ const createCommentSection = (comments) => {
 getDataById(entryKey)
 
 const patchComment = async (newArray,entryKey) => {
-    let response = await fetch(`${BLOG_ENDPOINT}/${entryKey}/comments/.json`,{
+    let response = await fetch(`https://desafiojs-5d832-default-rtdb.firebaseio.com/${entryKey}/comments/.json`,{
         method: "PUT",
         body: JSON.stringify(newArray)
     })
@@ -143,7 +144,7 @@ const logOut = () => {
     localStorage.removeItem("token");
 }
 let token = localStorage.getItem("token");
-console.log(token) 
+//console.log(token) 
 
 let btnLogout = document.getElementById("btn-logout");
 let btnLogin = document.getElementById("btn-login");

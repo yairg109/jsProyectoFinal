@@ -63,16 +63,34 @@ const createPostInDb = async (postObject) => {
 };
 
 
+// const showdata = async () => {
+//   let response = await fetch(
+    
+//     "http://localhost:3000/posts",
+//     {
+//       method: "GET",
+//       //body: JSON.stringify(body),
+//     }
+//   );
+//   let data = await response.json();
+//   return data;
+// };
+
+// showdata()
+
+
 const getAllEntries = async () => {
   let postWrapper = document.getElementById("post-wrapper");
   postWrapper.innerHTML = "";
-  let response = await fetch("https://desafiojs-5d832-default-rtdb.firebaseio.com/.json");
+  let response = await fetch("http://localhost:3000/posts");
+  //let response = await fetch("https://desafiojs-5d832-default-rtdb.firebaseio.com/.json");
   let data = await response.json();
-  let transformedData = Object.entries(data).reduce((accum,current) => {
-      return [...accum,{key:current[0], ...current[1] }];
-  },[]);
-  postEntries = transformedData;
-  console.log("soy publicaciones",postEntries);
+  // console.log(data.data)
+  // let transformedData = Object.entries(data.data).reduce((accum,current) => {
+  //     return [...accum,{key:current[0], ...current[1] }];
+  // },[]);
+  //postEntries = transformedData;
+  postEntries = data.data;
   
   if (postEntries) {
       printAllPost(postEntries);
@@ -98,7 +116,7 @@ saveProductBtn.addEventListener("click", savePost);
 
 const createPostCard = (entryData) => {
 
-  let { title, description, name, img, date, imgprofile, tags, key } = entryData;
+  let { title, description, name, img, date, imgprofile, tags, _id } = entryData;
   //let resultado_tag;  
   
   //console.log(entryData);
@@ -109,7 +127,7 @@ const createPostCard = (entryData) => {
 
   // Se agrega un addEventListener --- Ricardo
   userCol.addEventListener("click",() => {
-    window.open(`views/blogView.html?entryKey=${key}`,"_blank")
+    window.open(`views/blogView.html?entryKey=${_id}`,"_blank")
   })
 
   let userCard = document.createElement("div");

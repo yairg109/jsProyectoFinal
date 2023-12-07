@@ -1,4 +1,3 @@
-const BLOG_ENDPOINT = "http://localhost:3000/posts";
 let postEntries = [];
 
 document.querySelectorAll("#post-form input").forEach((input) => {
@@ -16,7 +15,7 @@ const createPostObject = () => {
   let date = document.getElementById("date").value;
   let tagsValue = document.getElementById("tags").value;
   let tags = tagsValue.split(",");
-  let comments_count = 50;
+  let comments_count = document.getElementById("name").value;
   let comments= [{comment_name: "Giovanni Matteo",
                         comment_profilePic: `https://randomuser.me/api/portraits/men/1.jpg`,
                         comment_text: "Thanks for this list. I have never heard some of them before. Since you mentioned Beekeper, I thought it could be interesting to add Retable to this list - it's an Airtable alternative but with a one-time payment. You can also add addons on top to boost with several features. There are several developers connecting Retable with 3rd party APIs to store lots of company data.",
@@ -50,10 +49,7 @@ const createPostObject = () => {
   }
 };
 
-
 const createPostInDb = async (postObject) => {
-  //let postCount = 15
-  //https://desafiojs-5d832-default-rtdb.firebaseio.com/usersList/{postCount}/.json
   let response = await fetch(
     
     "https://desafiojs-5d832-default-rtdb.firebaseio.com/.json",
@@ -67,23 +63,36 @@ const createPostInDb = async (postObject) => {
 };
 
 
+const showdata = async () => {
+  let response = await fetch(
+    
+    "http://localhost:3000/posts",
+    {
+      method: "GET",
+      //body: JSON.stringify(body),
+    }
+  );
+  let data = await response.json();
+  return data;
+};
+
+showdata()
+
 
 const getAllEntries = async () => {
   let postWrapper = document.getElementById("post-wrapper");
   postWrapper.innerHTML = "";
   let response = await fetch("https://desafiojs-5d832-default-rtdb.firebaseio.com/.json");
-  //let response = await fetch("http://localhost:3000/posts");
   let data = await response.json();
   let transformedData = Object.entries(data).reduce((accum,current) => {
       return [...accum,{key:current[0], ...current[1] }];
   },[]);
   postEntries = transformedData;
-  //postEntries = data.data
+  console.log("soy publicaciones",postEntries);
   
   if (postEntries) {
-      getAllEntries(postEntries);
+      printAllPost(postEntries);
   }
-   
 }
 
 getAllEntries();
@@ -91,10 +100,10 @@ getAllEntries();
 
 const savePost = async () => {
   let postObject = createPostObject();
-  console.log(postObject);
+  //console.log(postObject);
   if (postObject) {
     let response = await createPostInDb(postObject);
-    console.log(response);
+    //console.log(response);
     getAllEntries();
   }
 };
@@ -105,14 +114,19 @@ saveProductBtn.addEventListener("click", savePost);
 
 const createPostCard = (entryData) => {
 
-  let { title, description, name, img, date, imgprofile,tags, key } = entryData;
+  let { title, description, name, img, date, imgprofile, tags, key } = entryData;
   //let resultado_tag;  
   
-  console.log(entryData);
+  //console.log(entryData);
   // console.log('hola soy el nuevo',resultado_tag)
 
   let userCol = document.createElement("div");
   userCol.classList.add("col");
+
+  // Se agrega un addEventListener --- Ricardo
+  userCol.addEventListener("click",() => {
+    window.open(`views/blogView.html?entryKey=${key}`,"_blank")
+  })
 
   let userCard = document.createElement("div");
   userCard.classList.add("card","mb-4");
@@ -125,7 +139,7 @@ const createPostCard = (entryData) => {
 
   let userImage = document.createElement("img");
   userImage.classList.add("card-img-top","rounded-circle","img-size");
-  userImage.setAttribute("src","imgprofile");  // userData.picture.large
+  userImage.setAttribute("src",imgprofile);  // userData.picture.large
   userImage.setAttribute("alt", "Foto del post");
 
   let cardBody = document.createElement("div");
@@ -135,17 +149,6 @@ const createPostCard = (entryData) => {
   cardComents.classList.add("card-text","text-center","pt-3","h4");
   cardComents.textContent = title;
 
-  let productTags = document.createElement("div");
-  productTags.classList.add("d-flex", "gap-3", "flex-wrap");
-  tags.forEach((tag) => {
-    productTags.innerHTML =
-      productTags.innerHTML +
-      `
-    <span class="badge text-bg-info">${tag}</span>
-    `;
-  });
-
-  
   let divTags = document.createElement("div");
   divTags.classList.add("card-body","text-center");
   
@@ -153,7 +156,7 @@ const createPostCard = (entryData) => {
     let cardTag = document.createElement("a");
     cardTag.classList.add("p-1","h6","ancla_tag1","rounded");
     cardTag.setAttribute("href", "#");
-    cardTag.textContent = tag
+    cardTag.textContent = `#${tag}`
     divTags.append(cardTag)  
    
   });
@@ -181,8 +184,6 @@ const createPostCard = (entryData) => {
 
   imageProfile.append(imageProfileCol)
 
-  
-
   cardBody.append(imageProfile,cardComents,divTags);
 
   userCard.append(upImage, cardBody);
@@ -190,7 +191,6 @@ const createPostCard = (entryData) => {
   userCol.append(userCard);
   return userCol;
 };
-
 
 const printAllPost = (entriesArray) => {
   let postWrapper = document.getElementById("post-wrapper");
@@ -201,9 +201,98 @@ const printAllPost = (entriesArray) => {
   });
 };
 
-getAllEntries();
+let relevantButtom = document.getElementById("relevantButtom")
+let latestButtom = document.getElementById("latestButtom")
+let topButtom = document.getElementById("topButtom")
+
+topButtom.addEventListener("click",() => {
+  //console.log(postEntries)
+let topCommentsArray = postEntries.sort(sortTopCriteria)
+printAllPost(topCommentsArray)
+
+});
+
+relevantButtom.addEventListener("click",() => {
+  location.reload()
+});
+
+latestButtom.addEventListener("click",() => {
+  let latestArray = postEntries.sort(sortLatestCriteria)
+  console.log(latestArray)
+  printAllPost(latestArray)
+})
+
+const sortTopCriteria = (a, b) => {
+  if (a.comments_count> b.comments_count) {
+    return -1;
+  }
+  if (a.comments_count < b.comments_count) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+};
+
+const sortLatestCriteria = (a, b) => {
+  if (a.date> b.date) {
+    return 1;
+  }
+  if (a.date < b.date) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;
+};
+
+//logout
+const logOut = () => {
+  localStorage.removeItem("token");
+  location.reload();
+}
+
+const view = () =>{
+  let btnLogout = document.getElementById("btn-logout");
+  let btnLogin = document.getElementById("btn-login");
+  let btnCreate = document.getElementById("btn-create");
+  let btnPost = document.getElementById("btn-post");
+
+  let token = localStorage.getItem("token");
+  if (token ){
+    btnLogout.classList.remove("d-none");
+    btnPost.classList.remove("d-none");
+    btnLogin.classList.add("d-none");
+    btnCreate.classList.add("d-none");
+  } else {
+
+  }
+}
+view()
+let logOutButton = document.getElementById("btn-logout");
+logOutButton.addEventListener("click", logOut);
+
+let filterField = document.getElementById("filter-by-name");
+
+filterField.addEventListener("keyup", (event) => {
+  //console.log(postEntries)
+  let filterAlert = document.getElementById("filter-alert");
+  filterAlert.classList.add("d-none");
+
+  let value = event.target.value;
+  //console.log(value)
+  let filterResult = postEntries.filter((post) =>{
+    let search = post.title
+    console.log(search)
+    return search.toLowerCase().includes(value.toLowerCase())}
+  );
+  if (!filterResult.length) {
+    filterAlert.classList.remove("d-none");
+  }
+  console.log(filterResult);
+  printAllPost(filterResult);
+});
+
 
 let devLogo = document.getElementById("logo-nav")
 devLogo.addEventListener("click",() => {
-  window.open("../index.html")
+  window.open("index.html")
 })
